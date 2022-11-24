@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 function CreateTodoButtom() {
   return (
     <Fragment>
-      <div data-dial-init className='fixed left-16 top-14 group'>
+      <div data-dial-init className='fixed top-14 group'>
         <div id='speed-dial-menu-click' className='flex flex-col items-center hidden mb-4 space-y-2'>
           <button
             type='button'
