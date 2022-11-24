@@ -26,9 +26,19 @@ function TodoItem(props) {
               </svg>
             )}
           </div>
-          <div className='w-10/12'>
-            <div>{props.text}</div>
-          </div>
+          {props.completed ? (
+            <div className='w-10/12'>
+              <div className='text-base max-[425px]:text-sm max-[425px]:text-[11px] max-[425px]:font-RobotoMonoSemiBold'>
+                {props.text}
+              </div>
+            </div>
+          ) : (
+            <div className='w-10/12'>
+              <div className='line-through text-base max-[425px]:text-sm max-[425px]:text-[11px] max-[425px]:font-RobotoMonoSemiBold'>
+                {props.text}
+              </div>
+            </div>
+          )}
           <div>
             <Button>
               <FaTrashAlt className='w-4 h-4' />
