@@ -5,8 +5,28 @@ import { Fragment } from 'react';
 function CreateTodoButtom() {
   return (
     <Fragment>
-      <div data-dial-init className='fixed top-14 group'>
-        <div id='speed-dial-menu-click' className='flex flex-col items-center hidden mb-4 space-y-2'>
+      <div data-dial-init className='fixed flex top-14 group'>
+        <button
+          type='button'
+          data-dial-toggle='speed-dial-menu'
+          data-dial-trigger='click'
+          aria-controls='speed-dial-menu'
+          aria-expanded='false'
+          className='flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+        >
+          <svg
+            aria-hidden='true'
+            className='w-8 h-8 transition-transform group-hover:rotate-45'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M12 6v6m0 0v6m0-6h6m-6 0H6'></path>
+          </svg>
+          <span className='sr-only'>Open actions menu</span>
+        </button>
+        <div id='speed-dial-menu' className='flex flex-col items-center hidden mt-4 space-y-2'>
           <button
             type='button'
             data-tooltip-target='tooltip-copy'
@@ -34,24 +54,6 @@ function CreateTodoButtom() {
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
         </div>
-        <button
-          type='button'
-          data-dial-toggle='speed-dial-menu-click'
-          data-dial-trigger='click'
-          aria-controls='speed-dial-menu-click'
-          aria-expanded='false'
-          className='flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
-        >
-          <svg className='w-6 h-6' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              fillRule='evenodd'
-              d='M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z'
-              clipRule='evenodd'
-            />
-          </svg>
-
-          <span className='sr-only'>Open actions menu</span>
-        </button>
       </div>
     </Fragment>
   );
