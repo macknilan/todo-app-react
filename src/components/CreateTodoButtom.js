@@ -3,6 +3,10 @@
 import { Fragment } from 'react';
 
 function CreateTodoButtom() {
+  const onClickButton = (msg) => {
+    alert(msg);
+  };
+
   return (
     <Fragment>
       <div data-dial-init className='fixed flex top-14 group'>
@@ -13,6 +17,7 @@ function CreateTodoButtom() {
           aria-controls='speed-dial-menu'
           aria-expanded='false'
           className='flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800'
+          onClick={() => onClickButton('se abre modal')}
         >
           <svg
             aria-hidden='true'

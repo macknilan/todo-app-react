@@ -10,7 +10,7 @@ function TodoList(props) {
 }
 
 TodoList.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.array,
 };
 
 export { TodoList };
