@@ -7,9 +7,9 @@ function TodoItem(props) {
   //     alert('ya completaste todo ' + props.text);
   //   };
 
-  const onDelete = () => {
-    alert('ya borraste todo ' + props.text);
-  };
+  //   const onDelete = () => {
+  //     alert('ya borraste todo ' + props.text);
+  //   };
 
   return (
     <ul>
@@ -51,7 +51,7 @@ function TodoItem(props) {
               </div>
             </div>
           )}
-          <div onClick={onDelete}>
+          <div onClick={props.onDelete}>
             <Button>
               <FaTrashAlt className='w-4 h-4' />
             </Button>
@@ -66,6 +66,7 @@ TodoItem.propTypes = {
   text: PropTypes.string,
   completed: PropTypes.bool,
   onComplete: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export { TodoItem };
