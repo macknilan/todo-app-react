@@ -1,4 +1,4 @@
-import { faRectangleXmark, faSquareCheck, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faSquare, faSquareCheck, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'flowbite-react';
 import { PropTypes } from 'prop-types';
@@ -13,7 +13,7 @@ function TodoItem({ text, completed }) {
           </div>
         ) : (
           <div className='text-center basis-full sm:basis-auto'>
-            <FontAwesomeIcon icon={faRectangleXmark} size='xl' />
+            <FontAwesomeIcon icon={faSquare} size='xl' />
           </div>
         )}
         {completed ? (
