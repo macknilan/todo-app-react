@@ -1,6 +1,8 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { TodoCounter } from './TodoCounter';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
+import { TodoSearch } from './TodoSearch';
 
 const defaultTodos = [
   { key: 0, text: 'Cortar cebolla 0', completed: false },
@@ -12,11 +14,52 @@ const defaultTodos = [
 ];
 
 function TodoMain() {
+  const [todos, setTodos] = useState(defaultTodos);
+  const [searchValue, setSearchValue] = useState('');
+
+  // BUSCAR TODOS Y LOS COMPLETADOS TODOS
+  const completedTodos = todos.filter((todos) => todos.completed).length;
+  const totalTodos = todos.length;
+
+  // HACER EL FILTRADO MIENTRAS SE ESCRIBE EN EL INPUT
+  let searchedTodos = [];
+  if (!searchValue.length >= 1) {
+    searchedTodos = todos;
+  } else {
+    searchedTodos = todos.filter((todo) => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    });
+  }
+  // MARCAR TODO COMO COMPLETADO
+  const completeTodo = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text);
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  };
+  // ELIMINAR TODO
+  const deleteTodo = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <Fragment>
+      <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
-        {defaultTodos.map((todo) => (
-          <TodoItem key={todo.key} text={todo.text} completed={todo.completed} />
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.key}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
         ))}
       </TodoList>
     </Fragment>

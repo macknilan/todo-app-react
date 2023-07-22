@@ -3,7 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'flowbite-react';
 import { PropTypes } from 'prop-types';
 
-function TodoItem({ text, completed }) {
+function TodoItem({ text, completed, onComplete, onDelete }) {
+  /* const onComplete = () => {
+    alert('ya completaste todo ' + text);
+  }; */
+
+  /* const onDelete = () => {
+    alert('ya borraste todo ' + text);
+  }; */
+
   return (
     <li>
       <div className='flex flex-wrap sm:flex-nowrap sm:items-center sm:justify-around p-3 m-3 bg-white border border-gray-200 rounded-lg shadow-md dark:border-gray-700 dark:bg-gray-800 gap-x-1.5 hover:shadow-lg'>
@@ -12,7 +20,7 @@ function TodoItem({ text, completed }) {
             <FontAwesomeIcon icon={faSquareCheck} size='xl' />
           </div>
         ) : (
-          <div className='text-center basis-full sm:basis-auto'>
+          <div className='text-center basis-full sm:basis-auto' onClick={onComplete}>
             <FontAwesomeIcon icon={faSquare} size='xl' />
           </div>
         )}
@@ -22,7 +30,7 @@ function TodoItem({ text, completed }) {
           <div className='text-sm basis-full sm:basis-4/5 sm:text-lg'>{text}</div>
         )}
         <div className='basis-full sm:basis-auto '>
-          <Button color='failure' className='w-full'>
+          <Button color='failure' className='w-full' onClick={onDelete}>
             <FontAwesomeIcon icon={faTrashCan} size='lg' />
           </Button>
         </div>
@@ -33,6 +41,9 @@ function TodoItem({ text, completed }) {
 
 TodoItem.prototypes = {
   text: PropTypes.string,
+  completed: PropTypes.string,
+  onComplete: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export { TodoItem };
