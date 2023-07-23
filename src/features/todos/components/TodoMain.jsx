@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { useLocalStorage } from '../hooks/localStorage';
 import { TodoCounter } from './TodoCounter';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
@@ -14,26 +15,7 @@ import { TodoSearch } from './TodoSearch';
 // ];
 
 function TodoMain() {
-    
-  // TRAER DE LOCALSTORAGE EL ARRAY DE TODO'S
-  // SI NO EXISTE TODOS_V1 SE CREA [] SI NO SE OBTIENE
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-  // PERSISTIR LOS TODOS COMPLETADO/ELIMINADO EN LOCALSTORAGE
-  const saveTodos = (newTodos) => {
-      const stringifyTodos = JSON.stringify(newTodos);
-      localStorage.setItem('TODOS_V1', stringifyTodos);
-      setTodos(newTodos);
-    };
-    
-  const [todos, setTodos] = useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = useState('');
 
   // BUSCAR TODOS Y LOS COMPLETADOS TODOS
