@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { useLocalStorage } from '../hooks/localStorage';
+import { todosActions } from '../hooks/todosActions';
 import { TodoCounter } from './TodoCounter';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
@@ -16,38 +17,7 @@ import { TodoSearch } from './TodoSearch';
 
 function TodoMain() {
   const { item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
-
-  const [searchValue, setSearchValue] = useState('');
-
-  // BUSCAR TODOS Y LOS COMPLETADOS TODOS
-  const completedTodos = todos.filter((todos) => todos.completed).length;
-  const totalTodos = todos.length;
-
-  // HACER EL FILTRADO MIENTRAS SE ESCRIBE EN EL INPUT
-  let searchedTodos = [];
-  if (!searchValue.length >= 1) {
-    searchedTodos = todos;
-  } else {
-    searchedTodos = todos.filter((todo) => {
-      const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText);
-    });
-  }
-  // MARCAR TODO COMO COMPLETADO
-  const completeTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
-  };
-  // ELIMINAR TODO
-  const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    saveTodos(newTodos);
-  };
+  const { completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo} = todosActions(todos, saveTodos)
 
   return (
     <Fragment>
