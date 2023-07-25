@@ -15,7 +15,8 @@ import { TodoSearch } from './TodoSearch';
 // ];
 
 function TodoMain() {
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const { item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
+
   const [searchValue, setSearchValue] = useState('');
 
   // BUSCAR TODOS Y LOS COMPLETADOS TODOS
@@ -53,6 +54,9 @@ function TodoMain() {
       <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
+        {error && <p>Hubo un error ...</p>}
+        {loading && <p>l o a d i n g ...</p>}
+        {!loading && !searchedTodos.length && <p>Crea tu primer TODO!</p>}
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.key}
