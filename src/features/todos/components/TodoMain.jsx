@@ -16,8 +16,9 @@ import { TodoSearch } from './TodoSearch';
 // ];
 
 function TodoMain() {
-  const { item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
-  const { completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo} = todosActions(todos, saveTodos)
+  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('TODOS_V1', []);
+  const { completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo } =
+    todosActions(todos, saveTodos);
 
   return (
     <Fragment>
