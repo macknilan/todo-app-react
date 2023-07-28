@@ -26,7 +26,7 @@ function useLocalStorage(itemName, initialValue) {
       } catch (error) {
         setError(true);
       }
-    }, 1000);
+    }, 1500);
   });
   // PERSISTIR LOS TODOs COMPLETADO/ELIMINADO EN LOCAL STORAGE
   const saveItem = (newItem) => {

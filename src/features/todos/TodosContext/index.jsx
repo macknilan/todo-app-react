@@ -1,7 +1,11 @@
-// CUSTOM HOOKS PARA SEPARAR LAS ACCIONES DE LOS TODOS DE LA LA VISTA JSX
-import { useState } from 'react';
+import { createContext, useState } from 'react';
+import { useLocalStorage } from '../hooks/localStorage';
 
-function todosActions(todos, saveTodos) {
+const TodoContext = createContext();
+
+function TodoProvider(props) {
+  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('TODOS_V1', []);
+
   const [searchValue, setSearchValue] = useState('');
 
   // BUSCAR TODOS Y LOS COMPLETADOS TODOS
@@ -33,8 +37,39 @@ function todosActions(todos, saveTodos) {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
+  // AGREGAR TODO
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text,
+      key: newTodos.length + 1,
+    });
+    saveTodos(newTodos);
+  };
 
-  return { completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo };
+  // DATO DE PRUEBA PARA DESARROLLAR DESPUÉS
+  const data = { percentage: 30 };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        data,
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        addTodo,
+      }}
+    >
+      {props.children}
+    </TodoContext.Provider>
+  );
 }
 
-export { todosActions };
+export { TodoContext, TodoProvider };

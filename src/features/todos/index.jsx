@@ -1,18 +1,18 @@
 import { Fragment } from 'react';
+import { TodoProvider } from './TodosContext';
 import { CreateTodoButtom } from './components/CreateTodoButtom';
 import { TodoHeader } from './components/TodoHeader';
 import { TodoMain } from './components/TodoMain';
-import { TodosContext } from './context/TodosContext';
 
 function TodoFeature() {
   return (
-    <TodosContext>
+    <TodoProvider>
       <Fragment>
         <CreateTodoButtom />
         <TodoHeader />
         <TodoMain />
       </Fragment>
-    </TodosContext>
+    </TodoProvider>
   );
 }
 
