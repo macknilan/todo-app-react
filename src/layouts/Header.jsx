@@ -4,7 +4,7 @@ function MyHeader() {
   return (
     <Fragment>
       <div className='py-0.5'>
-        <p>COMPONENTE HEADER</p>
+        <p></p>
       </div>
     </Fragment>
   );

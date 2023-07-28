@@ -4,7 +4,7 @@ function MyNav() {
   return (
     <Fragment>
       <div className='py-0.5'>
-        <p>COMPONENTE MENÚ BAR</p>
+        <p></p>
       </div>
     </Fragment>
   );
