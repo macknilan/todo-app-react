@@ -2,17 +2,4 @@
 
 Proyecto para crear TODO's con React 18
 
-[Screencast_.webm](https://github.com/macknilan/todo-app-react/assets/4066042/1ed83c82-6a43-4b4d-850f-3dd4a97b24f0)
-
-
-
-
-
-
-
-
-
-
-
-
-
+[ 😁 ](https://github.com/macknilan/todo-app-react/assets/4066042/1ed83c82-6a43-4b4d-850f-3dd4a97b24f0)
