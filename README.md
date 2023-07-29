@@ -2,4 +2,31 @@
 
 Proyecto para crear TODO's con React 18
 
+Para poder publicar en Github Pages se ocupa la librería [gh-pages](https://github.com/tschaub/gh-pages)
+
+```bash
+npm i -D gh-pages
+```
+
+En el archivo `package.json` en `scripts` agregar al final las siguientes lineas
+
+```bash
+...
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
+}
+```
+
+En el archivo `vite.config.js` añadir la siguiente linea antes de `plugins: [react()],`
+
+```bash
+base: '/your-repository-name',
+```
+
+Después ejecutar
+
+```bash
+npm run deploy
+```
+
 [ 😁 ](https://github.com/macknilan/todo-app-react/assets/4066042/1ed83c82-6a43-4b4d-850f-3dd4a97b24f0)
