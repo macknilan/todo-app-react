@@ -1,6 +1,6 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-Proyecto para crear TODO's con React 18 [💪](https://macknilan.github.io/todo-app-react/)
+Proyecto para crear TODO's con React 18 🔗 ↗️ [https://macknilan.github.io/todo-app-react/](https://macknilan.github.io/todo-app-react/) 💪
 
 Para poder publicar en Github Pages se ocupa la librería [gh-pages](https://github.com/tschaub/gh-pages)
 
